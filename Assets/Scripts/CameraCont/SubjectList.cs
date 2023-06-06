@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using System.Text.RegularExpressions;
 
-public class SubjectList : MonoBehaviourPun //ƒJƒƒ‰‚É‰f‚Á‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg–¼‚ÌƒŠƒXƒg
+public class SubjectList : MonoBehaviourPun //ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½É‰fï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½Ìƒï¿½ï¿½Xï¿½g
 {
     public List<string> subjects = new List<string>();
 
@@ -22,7 +22,7 @@ public class SubjectList : MonoBehaviourPun //ƒJƒƒ‰‚É‰f‚Á‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg–¼‚Ì
 
     }
 
-    public void ClearSubjects() //ƒŠƒXƒg‚ÌƒIƒuƒWƒFƒNƒg‚ğÁ‚·
+    public void ClearSubjects() //ï¿½ï¿½ï¿½Xï¿½gï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         for (int i = 0; i< subjects.Count; i++)
         {
@@ -34,7 +34,7 @@ public class SubjectList : MonoBehaviourPun //ƒJƒƒ‰‚É‰f‚Á‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg–¼‚Ì
     {
         for (int i = 0; i< subjects.Count; i++)
         {
-            GameObject.Find(subjects[i]).transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 1); //ƒJƒƒ‰‚ÌF
+            GameObject.Find(subjects[i]).transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 1); //ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ÌF
 
         }
     }
@@ -81,7 +81,7 @@ public class SubjectList : MonoBehaviourPun //ƒJƒƒ‰‚É‰f‚Á‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg–¼‚Ì
 
     public void beforeWebCamera()
     {
-        if(subjects.Contains("key1(Clone)"))@//ukey1vƒLƒƒƒ‰ƒNƒ^[‚ªB‚ç‚ê‚½‚çAB‚Á‚½l‚ÌuNickNamev‚ÆAB‚ç‚ê‚½ukey1v‚ğ“n‚·
+        if(subjects.Contains("key1(Clone)"))//ï¿½@//ï¿½ukey1ï¿½vï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½ï¿½ï¿½Bï¿½ï¿½ê‚½ï¿½ï¿½Aï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ÌuNickNameï¿½vï¿½ÆAï¿½Bï¿½ï¿½ê‚½ï¿½ukey1ï¿½vï¿½ï¿½nï¿½ï¿½
         {
             photonView.RPC(nameof(beforeWebCamera2), RpcTarget.AllBuffered, PhotonNetwork.NickName, "key1");
         }
@@ -104,9 +104,9 @@ public class SubjectList : MonoBehaviourPun //ƒJƒƒ‰‚É‰f‚Á‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg–¼‚Ì
     void beforeWebCamera2(string nickname, string target)
     {
         int tempNum = int.Parse(Regex.Replace(nickname, @"[^0-9]", ""));
-        if (PhotonNetwork.NickName == target) //©•ª‚ªB‚ç‚ê‚½l‚È‚çu—ájkey1vAWebCamera‚ğÀs
+        if (PhotonNetwork.NickName == target) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ê‚½ï¿½lï¿½È‚ï¿½uï¿½ï¿½jkey1ï¿½vï¿½AWebCameraï¿½ï¿½ï¿½ï¿½ï¿½s
         {
-            webCamera.GetComponent<WebCamera>().WebCamCapture(tempNum); //B‚Á‚½luVRv‚ÌƒjƒbƒNƒl[ƒ€‚ğ“n‚µ‚ÄA‚»‚Ìl‘¤‚ÌÊ^ƒeƒNƒXƒ`ƒƒ‚ğXV‚µ‚½‚¢
+            webCamera.GetComponent<WebCamera>().WebCamCapture(tempNum); //ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½lï¿½uVRï¿½vï¿½Ìƒjï¿½bï¿½Nï¿½lï¿½[ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ÄAï¿½ï¿½ï¿½Ìlï¿½ï¿½ï¿½ÌÊ^ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         }
     }
 }
