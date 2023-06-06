@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{e23df2a1-69fb-9713-8564-8d031d7c05f2}</ProjectGuid>
+    <ProjectGuid>{118abebe-590e-e714-9dd5-fe3aecae623e}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>PunDemos.DemoSlotcarEditor</AssemblyName>
+    <AssemblyName>UniTask.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -36,10 +36,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\Photon\PhotonUnityNetworking\Demos\DemoSlotRacer\Scripts\BezierCurve\Editor\BezierSplineInspector.cs" />
-     <Compile Include="Assets\Plugins\Photon\PhotonUnityNetworking\Demos\DemoSlotRacer\Scripts\BezierCurve\Editor\LineInspector.cs" />
-     <Compile Include="Assets\Plugins\Photon\PhotonUnityNetworking\Demos\DemoSlotRacer\Scripts\BezierCurve\Editor\BezierCurveInspector.cs" />
-     <None Include="Assets\Plugins\Photon\PhotonUnityNetworking\Demos\DemoSlotRacer\Scripts\BezierCurve\Editor\PunDemos.DemoSlotcarEditor.asmdef" />
+     <Compile Include="Assets\Plugins\UniTask\Editor\SplitterGUILayout.cs" />
+     <Compile Include="Assets\Plugins\UniTask\Editor\UniTaskTrackerWindow.cs" />
+     <Compile Include="Assets\Plugins\UniTask\Editor\UniTaskTrackerTreeView.cs" />
+     <None Include="Assets\Plugins\UniTask\Editor\UniTask.Editor.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.4f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -738,9 +738,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
-      <Project>{badd7658-183f-3ce1-b06e-b5d84a5ee90b}</Project>
-      <Name>PhotonUnityNetworking.Demos</Name>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{2ea41275-0065-ad61-dc93-738f9f3f11d6}</Project>
+      <Name>UniTask</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

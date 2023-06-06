@@ -127,7 +127,6 @@ public class CameraControlScript : MonoBehaviourPun
                 break;
             default:
                 SpawnPhoto();
-                //流れ星
                 objects.GetComponent<ScreenshotSetter>().TakeScreenshot(); //�ʐ^�B�e
                 break;
         }

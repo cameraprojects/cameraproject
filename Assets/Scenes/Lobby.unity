@@ -987,7 +987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deviceNum: 
   model: 0
-  cameraman: 1
+  cameraman: 0
 --- !u!4 &926557170
 Transform:
   m_ObjectHideFlags: 0

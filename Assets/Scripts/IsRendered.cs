@@ -51,16 +51,19 @@ public class IsRendered : MonoBehaviour
         contactNum2 = 0;
 
     }
+    ///player（カメラマン）が近づいてきたときの処理
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            MoveObject(1);
+           // MoveObject(1);
+            transform.LookAt(PlayerTrans);
+            this.animator.SetBool(key_isAction, true);
         }
 
 
     }
-
+    ///player（カメラマン）が近くにいるときの処理
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -73,12 +76,14 @@ public class IsRendered : MonoBehaviour
             contactNum2++;
         }
     }
+    ///player（カメラマン）が離れたときの処理
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            MoveObject(0);
+           // MoveObject(0);
+            this.animator.SetBool(key_isAction, false);
             agent.Resume();
             AgentRun();
         }
@@ -106,26 +111,26 @@ public class IsRendered : MonoBehaviour
         }
     }
 
-    void MoveObject(int num)
-    {
-        if (num >= 1)
-        {
+    // void MoveObject(int num)
+    // {
+    //     if (num >= 1)
+    //     {
 
-            transform.LookAt(PlayerTrans);
-            this.animator.SetBool(key_isAction, true);
-        }
-        else
-        {
-
-
-            this.animator.SetBool(key_isAction, false);
-            //Debug.Log("Action");
-        }
+    //         transform.LookAt(PlayerTrans);
+    //         this.animator.SetBool(key_isAction, true);
+    //     }
+    //     else
+    //     {
 
 
+    //         this.animator.SetBool(key_isAction, false);
+    //         //Debug.Log("Action");
+    //     }
 
 
-    }
+
+
+    //}
 
     void AgentRun()
     {
