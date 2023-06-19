@@ -71,7 +71,7 @@ public class CameraControlScript : MonoBehaviourPun
                 SpawnPhoto();
                 //objects[0].GetComponent<ScreenshotSetter>().TakeScreenshot(); //�ʐ^�B�e
                 //ウェブカメラで撮影
-                subjectlist.GetComponent<SubjectList>().beforeWebCamera(); //�E�F�u�J����
+                //subjectlist.GetComponent<SubjectList>().beforeWebCamera(); //�E�F�u�J����
                 Debug.Log("happning number4");
 
                 break;
@@ -240,8 +240,11 @@ public class CameraControlScript : MonoBehaviourPun
     void SpawnPhotoSS(string nickname)
     {
         int tempNum = int.Parse(Regex.Replace(nickname, @"[^0-9]", ""));
-        GameObject SpawnPose = GameObject.Find("SpawnLocation "+tempNum.ToString());
-
+        //GameObject SpawnPose = GameObject.Find("SpawnLocation "+tempNum.ToString());
+        GameObject SpawnPose = GameObject.Find("SpawnLocation "+nickname);
+        if(SpawnPose==null){
+            Debug.Log("//////////////////////// SpawnPose null");
+        }
         photoPrefabs[tempNum-1].transform.position = SpawnPose.transform.position;
         photoPrefabs[tempNum-1].transform.rotation = SpawnPose.transform.rotation;
         photoPrefabs[tempNum-1].SetActive(true);

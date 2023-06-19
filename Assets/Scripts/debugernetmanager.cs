@@ -26,7 +26,7 @@ public class debugernetmanager :MonoBehaviourPunCallbacks
 
     public Stack<string> keyList = new Stack<string>();
     public Stack<string> vrList = new Stack<string>();
-    private int i=0;
+    private int debugerNum=0;
     private int vrplayernum=0;
 
     void Start()
@@ -122,8 +122,8 @@ public class debugernetmanager :MonoBehaviourPunCallbacks
     [PunRPC]
     void debugerlist() //�J�����}�����̏ꍇ(vr)�AvrList����j�b�N�l�[������o����ppNum�ɂ���
     {
-        ppNum = $"debuger{i}";
-        i++;
+        debugerNum++;
+        ppNum = $"debuger{debugerNum}";
     }
 
 
@@ -203,7 +203,17 @@ public class debugernetmanager :MonoBehaviourPunCallbacks
             {
                 GameObject.Find("Main Camera1").AddComponent(typeof(AudioListener));
             }
-            PhotonNetwork.Instantiate($"MainAvatar {(vrplayernum-1)%4+1}",new Vector3(0f, 0f, 0f), Quaternion.identity);
+            GameObject tmp= PhotonNetwork.Instantiate($"MainAvatar {(vrplayernum-1)%4+1}",new Vector3(0f, 0f, 0f), Quaternion.identity)  as GameObject;
+            // if(tmp==null){
+            //     Debug.Log("///////////////////////////////////////        tmp==null");
+            // }
+            Debug.Log(tmp.name);
+            GameObject psp= tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/SpawnLocation {(vrplayernum-1)%4+1}").gameObject;
+            GameObject cam= tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/RensLing {(vrplayernum-1)%4+1}/LensPos {(vrplayernum-1)%4+1}/Cameravr{(vrplayernum-1)%4+1}").gameObject;
+            GameObject evp=tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/RensLing {(vrplayernum-1)%4+1}/EventPos {(vrplayernum-1)%4+1}").gameObject;
+            psp.name=$"SpawnLocation vr{vrplayernum}";
+            cam.name=$"Cameravr{vrplayernum}";   
+            evp.name=$"EventPos vr{debugerNum}";
             /*
             if (PhotonNetwork.NickName == "vr1") //�����̃j�b�N�l�[�����ƂɃA�o�^�[�𕪂��ČĂяo��
             {
@@ -226,8 +236,13 @@ public class debugernetmanager :MonoBehaviourPunCallbacks
         else if (dNum == "3")
         {
             PhotonNetwork.NickName = ppNum; //�v���C���[�j�b�N�l�[����vr1~4�ɂ���
-            PhotonNetwork.Instantiate("debuger", new Vector3(0f, 3f, 0f), Quaternion.identity);
-            
+            GameObject tmp=PhotonNetwork.Instantiate("debuger", new Vector3(0f, 3f, 0f), Quaternion.identity);
+            GameObject psp= tmp.transform.Find("SpawnLocation").gameObject;
+            GameObject cam=tmp.transform.Find("Cameradebuger").gameObject;
+            GameObject evp=tmp.transform.Find("Cameradebuger/EventPos").gameObject;
+            psp.name=$"SpawnLocation debuger{debugerNum}";
+            cam.name=$"Cameradebuger{debugerNum}";
+            evp.name=$"EventPos debuger{debugerNum}";
         }
     }
     void Update()

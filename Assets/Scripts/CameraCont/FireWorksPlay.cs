@@ -34,8 +34,9 @@ public class FireWorksPlay : MonoBehaviourPun
     void PlayFireWorksss(string nickname)
     {
         Debug.Log("PlayFireWorksss");
-        string tempNum = Regex.Replace(nickname, @"[^0-9]", "");
-        GameObject parentObject = GameObject.Find("EventPos " + tempNum);
+        // string tempNum = Regex.Replace(nickname, @"[^0-9]", "");
+        // GameObject parentObject = GameObject.Find("EventPos " + tempNum);
+        GameObject parentObject = GameObject.Find("EventPos " + nickname);
         GameObject fireworks1 = Instantiate(fireworksParticle);
         //fireworks1.transform.localPosition = parentObject.transform.localPosition;
         //fireworks1.transform.localRotation = parentObject.transform.localRotation;
