@@ -28765,8 +28765,8 @@ MonoBehaviour:
     spine:
       bones: []
       headTarget: {fileID: 1793840846387370566}
-      positionWeight: 1
-      rotationWeight: 1
+      positionWeight: 0.3
+      rotationWeight: 0.3
       headClampWeight: 0.6
       minHeadHeight: 0.5
       useAnimatedHeadHeightWeight: 0
@@ -28839,7 +28839,7 @@ MonoBehaviour:
       bendGoalWeight: 0
       swivelOffset: 0
       bendToTargetWeight: 0.5
-      legLengthMlp: 1
+      legLengthMlp: 0.01
       stretchCurve:
         serializedVersion: 2
         m_Curve: []
@@ -28856,7 +28856,7 @@ MonoBehaviour:
       bendGoalWeight: 0
       swivelOffset: 0
       bendToTargetWeight: 0.5
-      legLengthMlp: 1
+      legLengthMlp: 0.01
       stretchCurve:
         serializedVersion: 2
         m_Curve: []
@@ -28865,7 +28865,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       useAnimatedBendNormal: 0
     locomotion:
-      mode: 0
+      mode: 1
       weight: 1
       moveThreshold: 0.3
       animationHeader: 0
@@ -28886,7 +28886,7 @@ MonoBehaviour:
       stepThreshold: 0.2
       angleThreshold: 30
       comAngleMlp: 3
-      maxVelocity: 1
+      maxVelocity: 2
       velocityFactor: 0.4
       maxLegStretch: 0.9
       rootSpeed: 20

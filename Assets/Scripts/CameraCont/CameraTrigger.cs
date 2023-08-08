@@ -29,8 +29,8 @@ public class CameraTrigger : MonoBehaviourPun
     {
         Debug.Log("DEBUG");
 
-        string tempNum = Regex.Replace(PhotonNetwork.NickName, @"[^0-9]", "");
-
+        // string tempNum = Regex.Replace(PhotonNetwork.NickName, @"[^0-9]", "");
+        string tempNum=PhotonNetwork.NickName;
         cameraControl.GetComponent<CameraControlScript>().RandomDraw();
 
         photonView.RPC(nameof(playsound), RpcTarget.AllBuffered, tempNum);
@@ -41,6 +41,8 @@ public class CameraTrigger : MonoBehaviourPun
     void playsound(string tempNum)
     {
         GameObject cameraSound = GameObject.Find("RensLing " + tempNum);
-        cameraSound.GetComponent<CameraSoundPlay1>().TakeSoundPlay();
+        if(cameraSound){
+                    cameraSound.GetComponent<CameraSoundPlay1>().TakeSoundPlay();
+        }
     }
 }

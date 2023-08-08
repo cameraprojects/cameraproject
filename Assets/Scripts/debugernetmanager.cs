@@ -126,8 +126,52 @@ public class debugernetmanager :MonoBehaviourPunCallbacks
         ppNum = $"debuger{debugerNum}";
     }
 
+    
+    [PunRPC]
+    void vrsetting(){
+        GameObject tmp=GameObject.Find($"MainAvatar {(vrplayernum-1)%4+1}(Clone)");
+        // Debug.Log(tmp.name);
+        GameObject psp= tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/SpawnLocation {(vrplayernum-1)%4+1}").gameObject;
+        GameObject cam= tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/RensLing {(vrplayernum-1)%4+1}/LensPos {(vrplayernum-1)%4+1}/Cameravr{(vrplayernum-1)%4+1}").gameObject;
+        GameObject evp=tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/RensLing {(vrplayernum-1)%4+1}/EventPos {(vrplayernum-1)%4+1}").gameObject;
+        GameObject rnsllng= tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/RensLing {(vrplayernum-1)%4+1}").gameObject;
+        if(psp){
+        psp.name=$"SpawnLocation vr{vrplayernum}";
 
+        }
+        if(cam){
+        cam.name=$"Cameravr{vrplayernum}";   
 
+        }
+        if(evp){
+        evp.name=$"EventPos vr{vrplayernum}";
+
+        }
+        if(rnsllng){
+           rnsllng.name=$"RensLing vr{vrplayernum}"; 
+        }
+    }
+
+    [PunRPC]
+    void debuggersetting(){
+        GameObject tmp=GameObject.Find("debuger");
+        GameObject psp= tmp.transform.Find("SpawnLocation").gameObject;
+        GameObject cam=tmp.transform.Find("Cameradebuger").gameObject;
+        GameObject evp=tmp.transform.Find("Cameradebuger/EventPos").gameObject;
+        GameObject rnsllng= tmp.transform.Find("Cameradubuger/RensLing").gameObject;
+        if(psp){
+            psp.name=$"SpawnLocation debuger{debugerNum}";
+        }
+        if(cam){
+            cam.name=$"Cameradebuger{debugerNum}";
+        }
+        if(evp){
+            evp.name=$"EventPos debuger{debugerNum}";
+        }
+        if(rnsllng){
+           rnsllng.name=$"RensLing debuger{debugerNum}"; 
+        }
+    }
 
 
     public override void OnConnectedToMaster()
@@ -203,18 +247,12 @@ public class debugernetmanager :MonoBehaviourPunCallbacks
             {
                 GameObject.Find("Main Camera1").AddComponent(typeof(AudioListener));
             }
-            GameObject tmp= PhotonNetwork.Instantiate($"MainAvatar {(vrplayernum-1)%4+1}",new Vector3(0f, 0f, 0f), Quaternion.identity)  as GameObject;
+            PhotonNetwork.Instantiate($"MainAvatar {(vrplayernum-1)%4+1}",new Vector3(0f, 0f, 0f), Quaternion.identity);
             // if(tmp==null){
             //     Debug.Log("///////////////////////////////////////        tmp==null");
             // }
-            Debug.Log(tmp.name);
-            GameObject psp= tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/SpawnLocation {(vrplayernum-1)%4+1}").gameObject;
-            GameObject cam= tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/RensLing {(vrplayernum-1)%4+1}/LensPos {(vrplayernum-1)%4+1}/Cameravr{(vrplayernum-1)%4+1}").gameObject;
-            GameObject evp=tmp.transform.Find($"Avatar {(vrplayernum-1)%4+1}/Right/vrcamera {(vrplayernum-1)%4+1}/RensLing {(vrplayernum-1)%4+1}/EventPos {(vrplayernum-1)%4+1}").gameObject;
-            psp.name=$"SpawnLocation vr{vrplayernum}";
-            cam.name=$"Cameravr{vrplayernum}";   
-            evp.name=$"EventPos vr{debugerNum}";
-            /*
+             photonView.RPC(nameof(vrsetting), RpcTarget.AllBuffered);
+           /*
             if (PhotonNetwork.NickName == "vr1") //�����̃j�b�N�l�[�����ƂɃA�o�^�[�𕪂��ČĂяo��
             {
                 PhotonNetwork.Instantiate("MainAvatar 1", new Vector3(0f, 0f, 0f), Quaternion.identity);
@@ -236,13 +274,9 @@ public class debugernetmanager :MonoBehaviourPunCallbacks
         else if (dNum == "3")
         {
             PhotonNetwork.NickName = ppNum; //�v���C���[�j�b�N�l�[����vr1~4�ɂ���
-            GameObject tmp=PhotonNetwork.Instantiate("debuger", new Vector3(0f, 3f, 0f), Quaternion.identity);
-            GameObject psp= tmp.transform.Find("SpawnLocation").gameObject;
-            GameObject cam=tmp.transform.Find("Cameradebuger").gameObject;
-            GameObject evp=tmp.transform.Find("Cameradebuger/EventPos").gameObject;
-            psp.name=$"SpawnLocation debuger{debugerNum}";
-            cam.name=$"Cameradebuger{debugerNum}";
-            evp.name=$"EventPos debuger{debugerNum}";
+            PhotonNetwork.Instantiate("debuger", new Vector3(0f, 3f, 0f), Quaternion.identity);
+            
+            photonView.RPC(nameof(debuggersetting), RpcTarget.AllBuffered);
         }
     }
     void Update()
